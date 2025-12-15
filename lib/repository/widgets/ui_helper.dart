@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class UiHelper {
+  Widget mSpacer({double mWidth = 11, double mHeight = 11}) =>
+      SizedBox(width: mWidth, height: mHeight);
+
   static customImage({
     required String imgUrl,
     double mWidth = 50,

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/domain/constants/app_colors.dart';
-import 'package:food_recipe/repository/screens/signup/signup_screen.dart';
-import 'package:food_recipe/repository/widgets/custom_button.dart';
-import 'package:food_recipe/repository/widgets/custom_text_field.dart';
-import 'package:food_recipe/repository/widgets/ui_helper.dart';
+import 'package:food_recipe/repository/screens/login/login_screen.dart';
+import '../../../domain/constants/app_colors.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../widgets/ui_helper.dart';
 
-class LoginScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget {
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  LoginScreen({super.key});
+  SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +21,22 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             UiHelper.customText(
-              text: "Hello,",
-              fontSize: 30,
+              text: "Create an account",
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
-            UiHelper.customText(text: "Welcome Back!", fontSize: 20),
+            UiHelper.customText(
+              text: "Let’s help you set up your account,\nit won’t take long.",
+              fontSize: 12,
+            ),
+            SizedBox(height: 30),
+            CustomTextField(
+              controller: usernameController,
+              labelText: "Username",
+              hintText: "Enter Your Username",
+              mWidth: 372,
+              mHeight: 55,
+            ),
             SizedBox(height: 15),
             CustomTextField(
               controller: emailController,
@@ -42,30 +54,28 @@ class LoginScreen extends StatelessWidget {
               mHeight: 55,
             ),
             SizedBox(height: 15),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(color: AppColors.textColorYellow),
-              ),
+            CustomButton(
+              text: "Sign Up",
+              mWidth: 372,
+              mHeight: 55,
+              onTap: () {},
             ),
-            CustomButton(text: "Login", mWidth: 372, mHeight: 55, onTap: () {}),
           ],
         ),
       ),
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          UiHelper.customText(text: "Don’t have an account?", fontSize: 12),
+          UiHelper.customText(text: "Already have account?", fontSize: 12),
           TextButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SignupScreen()),
+                MaterialPageRoute(builder: (context) => LoginScreen()),
               );
             },
             child: Text(
-              "Sign up",
+              "Login",
               style: TextStyle(color: AppColors.textColorYellow),
             ),
           ),
