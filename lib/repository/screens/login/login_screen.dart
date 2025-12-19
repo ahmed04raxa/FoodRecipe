@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/domain/constants/app_colors.dart';
+import 'package:food_recipe/repository/screens/bottomnav/bottom_nav_screen.dart';
 import 'package:food_recipe/repository/screens/signup/signup_screen.dart';
 import 'package:food_recipe/repository/widgets/custom_button.dart';
 import 'package:food_recipe/repository/widgets/custom_text_field.dart';
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -49,7 +51,17 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(color: AppColors.textColorYellow),
               ),
             ),
-            CustomButton(text: "Login", mWidth: 372, mHeight: 55, onTap: () {}),
+            CustomButton(
+              text: "Login",
+              mWidth: 372,
+              mHeight: 55,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BottomNavScreen()),
+                );
+              },
+            ),
           ],
         ),
       ),

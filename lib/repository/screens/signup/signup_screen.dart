@@ -14,6 +14,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
