@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe/domain/constants/app_colors.dart';
 import 'package:food_recipe/models/categories_recipe.dart';
 import 'package:food_recipe/models/recipe_model.dart';
+import 'package:food_recipe/repository/screens/home/item_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,8 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
                   filled: true,
-                  fillColor: Colors.white,
                   border: InputBorder.none,
+                  fillColor: Color(0XFFF6F7FB),
                   hintText: "Search any recipe",
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(11),
@@ -172,7 +173,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? EdgeInsets.only(left: 20, right: 10)
                         : EdgeInsets.only(right: 10),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ItemDetailScreen(recipeItems: recipe),
+                          ),
+                        );
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2.45,
                         height: 260,
@@ -252,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   SizedBox(height: 3),
                                   Text(
-                                    "${recipe.calorie} Kkal | 25% AKL",
+                                    "${recipe.calorie} Kal | 25% AKL",
                                     style: TextStyle(
                                       height: 0,
                                       color: Colors.white70,
@@ -363,7 +372,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Expert Chef",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.5),
+                          color: Colors.black.withValues(alpha: 0.55),
                           fontSize: 12,
                         ),
                       ),
